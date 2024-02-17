@@ -18,15 +18,15 @@ To build this example on Linux or Mac, to to that same download page and find th
 
 ## Running the example
 
-### On Windows
+### On your Windows desktop
 
-1. Open a command window
+1. Open a command window on your host machine (Windows machine)
 1. cd into the endpoint-examples/src/pinvoke directory
 1. Run: ```build windows```.  This will build the native library and the dotnet program and run the program.
 
-### On Endpoint
+### On an Endpoint device
 
-1. Open a command window
+1. Open a command window on your host machine (Windows machine)
 1. cd into the endpoint-examples/src/pinvoke directory
 1. Run ```build endpoint```.
-1. Use VSCode and the Endpoint Debugger extension to install and run the application
+1. Use VSCode and the Endpoint Debugger extension to install and run the application on the Endpoint.
