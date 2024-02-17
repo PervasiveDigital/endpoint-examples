@@ -1,30 +1,15 @@
-﻿using System;
-using System.Threading;
-using System.Device.Gpio;
-using System.Device.Gpio.Drivers;
-using System.Device.Spi;
-using GHIElectronics.Endpoint.Core;
-          
-var count = 0;
-var pin = EPM815.Gpio.Pin.PC0;
-var portId = pin / 16;
-var pinId = pin % 16;
+﻿using System.Runtime.InteropServices;
 
-var gpioController = new GpioController(PinNumberingScheme.Logical, new LibGpiodDriver(portId));
+#if WINDOWS_EMULATION
+[DllImport("mathlib.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+    static extern Int32 add(Int32 a, Int32 b);
+#else
+[DllImport("mathlib.so", CharSet = CharSet.Unicode, SetLastError = true)]
+    static extern Int32 add(Int32 a, Int32 b);
+#endif
 
-gpioController.OpenPin(pinId);
-gpioController.SetPinMode(pinId, PinMode.Output);
+Int32 val1 = 12;
+Int32 val2 = 30;
 
-Console.WriteLine("Embedded .NET template"); 
-
-while (true)
-{
-    Console.WriteLine("Counter increase every one seconds: " + count++);
-
-    gpioController.Write(pinId, PinValue.High);
-    Thread.Sleep(500);
-
-    gpioController.Write(pinId, PinValue.Low);
-    Thread.Sleep(500);
-                
-}
+var sum = add(val1, val2);
+Console.WriteLine($"The answer to life, the universe and everything is {sum}");

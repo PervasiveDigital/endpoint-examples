@@ -14,4 +14,17 @@
 	<PackageReference Include="GHIElectronics.Endpoint.Core" Version="0.1.0-beta" />
   </ItemGroup>
 
+  <ItemGroup Condition=" !$(DefineConstants.Contains('WINDOWS_EMULATION')) ">
+    <Content Include="nativelib\build\endpoint\libmathlib.so">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>libmathlib.so</TargetPath>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup Condition=" $(DefineConstants.Contains('WINDOWS_EMULATION')) ">
+    <Content Include="nativelib\build\windows\mathlib.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>mathlib.dll</TargetPath>
+    </Content>
+  </ItemGroup>
 </Project>

@@ -399,3 +399,5 @@ FodyWeavers.xsd
 
 # CMake build directories
 build
+mathlib.dll
+libmathlib.so
